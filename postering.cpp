@@ -19,7 +19,6 @@ int getHeight() {
 
 std::vector<int> getBuildingHeights() {
     int buildingsNumber;
-    std::cout << "Podaj liczbę budynków, a potem ich wymiary (długość wysokość): " << std::endl;
     std::ios_base::sync_with_stdio(false);
     std::cin >> buildingsNumber;
     std::vector<int> buildingHeights;
