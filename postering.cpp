@@ -31,13 +31,14 @@ std::vector<int> getBuildingHeights() {
 
 int getUtilizedPosters(std::vector<int> buildingHeights) {
     std::vector<int> posters;
+    posters.reserve(buildingHeights.size());
     int utilizedPosters = 0;
-    for (std::vector<int>::iterator it = buildingHeights.begin(); it != buildingHeights.end(); ++it) {
-        while (posters.size() != 0 && posters.front() > *it) {
-            posters.erase(posters.begin());
+    for (const auto &s : buildingHeights) {
+        while (!posters.empty() && posters.back() > s) {
+            posters.pop_back();
         }
-        if (posters.size() == 0 || posters.front() < *it) {
-            posters.insert(posters.begin(), *it);
+        if (posters.empty() || posters.back() < s) {
+            posters.push_back(s);
             utilizedPosters++;
         }
     }
